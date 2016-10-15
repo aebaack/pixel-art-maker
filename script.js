@@ -1,9 +1,16 @@
 'use strict';
+
+// Number of rows and columns to generate initial grid
 var rowNum = 30;
 var columnNum = 40;
+
+// Global pixel color
 var pixelColor = "";
 
+// ----- Generating the initial grid and adding rows and columns later
+
 function fillRow(row, howMany) {
+  // Creates a specified number of columns and appends to a row
   var pixel;
   for (var i = 0; i < howMany; i++) {
     pixel = document.createElement("div");
@@ -13,6 +20,7 @@ function fillRow(row, howMany) {
 }
 
 function createRow(howMany) {
+  // Creates a specified number of rows and appends to the grid
   var row;
   for (var i = 0; i < howMany; i++) {
     row = document.createElement("div");
@@ -23,12 +31,16 @@ function createRow(howMany) {
   setPixelHeight();
 }
 
+// ----- Adding rows and columns -----
+
 function addRow() {
+  // Adds one row to the bottom
   rowNum++;
   createRow(1);
 }
 
 function removeRow() {
+  // Deletes one row from the bottom
   if (rowNum > 1) {
     rowNum--;
     var rows = document.getElementsByClassName("pixelRow");
@@ -38,6 +50,7 @@ function removeRow() {
 }
 
 function addCol() {
+  // Adds one column on the right
   columnNum++;
   var rows = document.getElementsByClassName("pixelRow");
   for (var i = 0; i < rows.length; i++) {
@@ -47,6 +60,7 @@ function addCol() {
 }
 
 function removeCol() {
+  // Deletes one column from the right
   if (columnNum > 1) {
     columnNum--;
     var rows = document.getElementsByClassName("pixelRow");
@@ -57,12 +71,10 @@ function removeCol() {
   }
 }
 
-function colorPixel(event) {
-  event.target.style.backgroundColor = pixelColor;
-  event.target.style.borderColor = pixelColor;
-}
+// ----- Circle colors -----
 
 function randomColor() {
+  // Returns a random hexadecimal color
   var possible = "0123456789ABCDEF";
   var finalColor = "#";
   for (var i = 0; i < 6; i++) {
@@ -72,24 +84,39 @@ function randomColor() {
 }
 
 function setCircleColor(circle, color) {
+  // Sets the backgroundColor of a circle with the specified color
   circle.style.backgroundColor = color;
 }
 
 function randomizeCircleColors() {
+  // Adds a random backgroundColor to the circles in the right column
   var circles = document.getElementsByClassName("random");
   for (var i = 0; i < circles.length; i++) {
     setCircleColor(circles[i], randomColor());
   }
 }
 
+// ----- Coloring and resizing pixels -----
+
+function colorPixel(event) {
+  // Colors a pixel that has been clicked on
+  event.target.style.backgroundColor = pixelColor;
+  event.target.style.borderColor = pixelColor;
+}
+
+function eraser() {
+  // Changes the global color variable to blank
+  pixelColor = "";
+}
+
+function addCustomColor() {
+  var custom = document.getElementById("customColor").value;
+  pixelColor = custom;
+  document.getElementById("current").style.backgroundColor = pixelColor;
+}
+
 function setPixelHeight() {
-  // var pixelHeight = document.getElementsByClassName("pixelBlock")[0].offsetWidth;
-  // var styleSheet = document.styleSheets[0];
-  // try {
-  //   styleSheet.removeRule(7);
-  // } catch(e) {
-  // }
-  // styleSheet.insertRule('.pixelBlock {height: '+pixelHeight+'px;}', 7);
+  // Sets the height of each pixel to equal the width
   var pixelHeight = document.getElementsByClassName("pixelBlock")[0].offsetWidth;
   var rows = document.getElementsByClassName("pixelRow");
   var pixels;
@@ -101,14 +128,14 @@ function setPixelHeight() {
   }
 }
 
-function eraser() {
-  pixelColor = "";
-}
 
 var grid = document.getElementById("grid");
+
+// Colors a pixel when it is clicked
 grid.addEventListener("click", colorPixel);
 
 // ----- Click and drag paintbrush -----
+
 function mouseOver(event) {
   colorPixel(event);
 }
@@ -123,6 +150,7 @@ grid.addEventListener("mouseup", function() {
 });
 
 // ----- Changing Colors -----
+
 function changeColor(event) {
   pixelColor = event.target.style.backgroundColor;
   document.getElementById("current").style.backgroundColor = pixelColor;
@@ -133,7 +161,10 @@ for (var i = 0; i < colors.length; i++) {
   colors[i].addEventListener("click", changeColor);
 }
 
+// ----- Resize event for keeping the pixels square -----
+
 window.addEventListener("resize", setPixelHeight);
 
+// Create grid and generate random colors
 createRow(rowNum);
 randomizeCircleColors();

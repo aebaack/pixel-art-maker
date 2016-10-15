@@ -8,6 +8,7 @@ body {
   background-color: gray;
   display: flex;
   justify-content: space-between;
+  cursor: default;
   /*min-width: 730px;*/
 }
 
@@ -32,6 +33,7 @@ button {
   flex-grow: 1;
   /*width: 70%;*/
   margin: 2em auto;
+  margin-bottom: 3em;
   border: 2px solid black;
   border-radius: 2em;
   background-color: lightgray;
@@ -66,6 +68,7 @@ button {
 
 .gridEdit {
   margin-top: 1em;
+  text-align: center;
 }
 
 .circle {
@@ -98,4 +101,8 @@ button {
 .columnHolder {
   display: flex;
   width: 100%;
+}
+
+#colorHolder {
+  cursor: crosshair;
 }
