@@ -1,7 +1,7 @@
 'use strict';
 var rowNum = 30;
 var columnNum = 40;
-var pixelColor = "black";
+var pixelColor = "";
 
 function fillRow(row, howMany) {
   var pixel;
@@ -63,7 +63,7 @@ function colorPixel(event) {
 }
 
 function randomColor() {
-  var possible = "0123456789ABCDEF"
+  var possible = "0123456789ABCDEF";
   var finalColor = "#";
   for (var i = 0; i < 6; i++) {
     finalColor += possible[Math.floor(Math.random() * 16)];
@@ -101,13 +101,32 @@ function setPixelHeight() {
   }
 }
 
-function changeColor(event) {
-  pixelColor = event.target.style.backgroundColor;
-  document.getElementById("current").style.backgroundColor = pixelColor;
+function eraser() {
+  pixelColor = "";
 }
 
 var grid = document.getElementById("grid");
 grid.addEventListener("click", colorPixel);
+
+// ----- Click and drag paintbrush -----
+function mouseOver(event) {
+  colorPixel(event);
+}
+
+grid.addEventListener("mousedown", function(event) {
+  colorPixel(event);
+  grid.addEventListener("mouseover", mouseOver);
+});
+
+grid.addEventListener("mouseup", function() {
+  grid.removeEventListener("mouseover", mouseOver);
+});
+
+// ----- Changing Colors -----
+function changeColor(event) {
+  pixelColor = event.target.style.backgroundColor;
+  document.getElementById("current").style.backgroundColor = pixelColor;
+}
 
 var colors = document.getElementsByClassName("color");
 for (var i = 0; i < colors.length; i++) {

@@ -18,8 +18,7 @@
       </section>
       <section class="gridEdit">
         <h2>Select</h2>
-        <!-- <button value="Randomize" onclick="randomizeColors()">Randomize</button> -->
-        <div class="columnHolder">
+        <div class="columnHolder" id="colorHolder">
           <div class="colorColumn">
             <div class="circle color" style="background-color: blue"></div>
             <div class="circle color" style="background-color: green"></div>
@@ -41,7 +40,8 @@
             <div class="circle color random"></div>
           </div>
         </div>
-        <button value="Randomize Colors" onclick="randomizeCircleColors()">Randomize</button>
+        <button value="Randomize Colors" onclick="randomizeCircleColors()">Random</button>
+        <button value="Custom Color" onclick="randomizeCircleColors()">Custom</button>
       </section>
     </aside>
     <div id="wrapper">
@@ -53,13 +53,17 @@
       <hr style="width: 90%; margin:auto;">
       <div class="gridEdit">
         <h2>Rows</h2>
-        <button class="myButton" value="Add Row" onclick="addRow();">+</button>
+        <button value="Add Row" onclick="addRow();">+</button>
         <button value="Remove Row" onclick="removeRow();">-</button>
       </div>
       <div class="gridEdit">
         <h2>Columns</h2>
         <button value="Add Column" onclick="addCol();">+</button>
         <button value="Subtract Col" onclick="removeCol();">-</button>
+      </div>
+      <div class="gridEdit">
+        <h2>Tools</h2>
+        <button value="Eraser" onclick="eraser();">Eraser</button>
       </div>
     </aside>
   </body>
