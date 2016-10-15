@@ -1,7 +1,7 @@
 'use strict';
-// var row = document.getElementsByClassName("row")[0];
 var rowNum = 20;
 var columnNum = 50;
+var pixelColor = "black";
 
 function fillRow(row, howMany) {
   var pixel;
@@ -25,14 +25,12 @@ function createRow(howMany) {
 
 function addRow() {
   createRow(1);
-  setPixelHeight();
+  // setPixelHeight();
 }
 
 function removeRow() {
   var rows = document.getElementsByClassName("pixelRow");
-  console.log(rows);
   var lastRow = rows[rows.length - 1];
-  console.log(lastRow);
   lastRow.parentNode.removeChild(lastRow);
 }
 
@@ -55,17 +53,26 @@ function removeCol() {
 }
 
 function colorPixel(event) {
-  event.target.style.backgroundColor = "black";
+  event.target.style.backgroundColor = pixelColor;
 }
 
 function setPixelHeight() {
+  // var pixelHeight = document.getElementsByClassName("pixelBlock")[0].offsetWidth;
+  // var styleSheet = document.styleSheets[0];
+  // try {
+  //   styleSheet.removeRule(7);
+  // } catch(e) {
+  // }
+  // styleSheet.insertRule('.pixelBlock {height: '+pixelHeight+'px;}', 7);
   var pixelHeight = document.getElementsByClassName("pixelBlock")[0].offsetWidth;
-  var styleSheet = document.styleSheets[0];
-  try {
-    styleSheet.removeRule(7);
-  } catch(e) {
+  var rows = document.getElementsByClassName("pixelRow");
+  var pixels;
+  for (var i = 0; i < rows.length; i++) {
+    pixels = rows[i].childNodes;
+    for (var j = 0; j < pixels.length; j++) {
+      pixels[i].style.height = pixelHeight+"px";
+    }
   }
-  styleSheet.insertRule('.pixelBlock {height: '+pixelHeight+'px;}', 7);
 }
 
 var grid = document.getElementById("grid");

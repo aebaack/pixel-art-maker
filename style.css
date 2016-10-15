@@ -6,14 +6,21 @@
 
 body {
   background-color: gray;
+  display: flex;
+  justify-content: space-between;
 }
 
-h1 {
+h1, h2 {
   text-align: center;
 }
 
+h2 {
+  font-size: 1.2em;
+}
+
 #wrapper {
-  width: 70%;
+  flex-grow: 1;
+  /*width: 70%;*/
   margin: 2em auto;
   border: 2px solid black;
   border-radius: 2em;
@@ -25,9 +32,6 @@ h1 {
   width: 90%;
   margin: auto;
   margin-bottom: 3em;
-  /*border: 1px solid black;*/
-  /*border-radius: 1em;*/
-  /*height: 300px;*/
 }
 
 .pixelRow {
@@ -40,4 +44,45 @@ h1 {
   border: 1px solid gray;
   flex-grow: 1;
   background-color: white;
+}
+
+.menu {
+  flex-basis: 10%;
+  margin-top: 3em;
+  position: relative;
+}
+
+.gridEdit {
+  margin-top: 1em;
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+.color {
+  /*border: 1px solid black;*/
+  width: 80%;
+  /*height: 0;*/
+  padding-top: 80%;
+  background-color: white;
+  margin: auto;
+  margin-top: 0.5em;
+  /*margin-left: 10%;*/
+}
+
+#current {
+  margin: auto;
+  margin-top: 1em;
+}
+
+.colorColumn {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.columnHolder {
+  display: flex;
+  width: 100%;
 }

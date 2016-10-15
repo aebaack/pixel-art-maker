@@ -9,14 +9,44 @@
     <script src="script.js" defer></script>
   </head>
   <body>
+    <aside class="menu">
+      <h1>Change Color</h1>
+      <hr style="width: 90%; margin:auto;">
+      <div class="gridEdit">
+        <h2>Current</h2>
+        <div class="circle color" id="current"></div>
+      </div>
+      <div class="gridEdit">
+        <h2>Select</h2>
+        <div class="columnHolder">
+          <div class="colorColumn">
+            <div class="circle color"></div>
+            <div class="circle color"></div>
+          </div>
+          <div class="colorColumn">
+            <div class="circle color"></div>
+            <div class="circle color"></div>
+          </div>
+        </div>
+      </div>
+    </aside>
     <div id="wrapper">
       <h1>Aidan's Pixel Art Creator</h1>
       <div id="grid"></div>
-      <aside id="menu"></aside>
-      <button value="Add Row" onclick="addRow();">Add Row</button>
-      <button value="Add Column" onclick="addCol();">Add Column</button>
-      <button value="Subtract Row" onclick="removeRow();">Subtract Row</button>
-      <button value="Subtract Col" onclick="removeCol();">Subtract Col</button>
     </div>
+    <aside class="menu">
+      <h1>Change Grid</h1>
+      <hr style="width: 90%; margin:auto;">
+      <div class="gridEdit">
+        <h2>Rows</h2>
+        <button value="Add Row" onclick="addRow();">+</button>
+        <button value="Remove Row" onclick="removeRow();">-</button>
+      </div>
+      <div class="gridEdit">
+        <h2>Columns</h2>
+        <button value="Add Column" onclick="addCol();">+</button>
+        <button value="Subtract Col" onclick="removeCol();">-</button>
+      </div>
+    </aside>
   </body>
 </html>
