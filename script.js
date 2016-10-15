@@ -59,6 +59,7 @@ function removeCol() {
 
 function colorPixel(event) {
   event.target.style.backgroundColor = pixelColor;
+  event.target.style.borderColor = pixelColor;
 }
 
 function randomColor() {
@@ -102,7 +103,7 @@ function setPixelHeight() {
 
 function changeColor(event) {
   pixelColor = event.target.style.backgroundColor;
-  console.log(pixelColor);
+  document.getElementById("current").style.backgroundColor = pixelColor;
 }
 
 var grid = document.getElementById("grid");
