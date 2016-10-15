@@ -8,6 +8,7 @@ body {
   background-color: gray;
   display: flex;
   justify-content: space-between;
+  /*min-width: 730px;*/
 }
 
 h1, h2 {
@@ -18,6 +19,15 @@ h2 {
   font-size: 1.2em;
 }
 
+button {
+  font-size: 3em;
+  width: 100%;
+  display: block;
+  max-width: 50px;
+  margin: auto;
+  margin-top: 0.2em;
+}
+
 #wrapper {
   flex-grow: 1;
   /*width: 70%;*/
@@ -26,6 +36,8 @@ h2 {
   border-radius: 2em;
   background-color: lightgray;
   box-shadow:0 6px 20px 0 rgba(0, 0, 0, 0.4);
+  /*overflow: auto;*/
+  /*height: 200px;*/
 }
 
 #grid {
@@ -62,9 +74,9 @@ h2 {
 
 .color {
   /*border: 1px solid black;*/
-  width: 80%;
+  width: 70%;
   /*height: 0;*/
-  padding-top: 80%;
+  padding-top: 70%;
   background-color: white;
   margin: auto;
   margin-top: 0.5em;

@@ -12,23 +12,36 @@
     <aside class="menu">
       <h1>Change Color</h1>
       <hr style="width: 90%; margin:auto;">
-      <div class="gridEdit">
+      <section class="gridEdit">
         <h2>Current</h2>
         <div class="circle color" id="current"></div>
-      </div>
-      <div class="gridEdit">
+      </section>
+      <section class="gridEdit">
         <h2>Select</h2>
+        <!-- <button value="Randomize" onclick="randomizeColors()">Randomize</button> -->
         <div class="columnHolder">
           <div class="colorColumn">
             <div class="circle color"></div>
             <div class="circle color"></div>
+            <div class="circle color"></div>
+            <div class="circle color"></div>
+            <div class="circle color"></div>
+            <div class="circle color"></div>
+            <div class="circle color"></div>
+            <div class="circle color"></div>
           </div>
           <div class="colorColumn">
-            <div class="circle color"></div>
-            <div class="circle color"></div>
+            <div class="circle color random"></div>
+            <div class="circle color random"></div>
+            <div class="circle color random"></div>
+            <div class="circle color random"></div>
+            <div class="circle color random"></div>
+            <div class="circle color random"></div>
+            <div class="circle color random"></div>
+            <div class="circle color random"></div>
           </div>
         </div>
-      </div>
+      </section>
     </aside>
     <div id="wrapper">
       <h1>Aidan's Pixel Art Creator</h1>
@@ -39,7 +52,7 @@
       <hr style="width: 90%; margin:auto;">
       <div class="gridEdit">
         <h2>Rows</h2>
-        <button value="Add Row" onclick="addRow();">+</button>
+        <button class="myButton" value="Add Row" onclick="addRow();">+</button>
         <button value="Remove Row" onclick="removeRow();">-</button>
       </div>
       <div class="gridEdit">

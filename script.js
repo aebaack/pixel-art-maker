@@ -1,6 +1,6 @@
 'use strict';
-var rowNum = 20;
-var columnNum = 50;
+var rowNum = 30;
+var columnNum = 40;
 var pixelColor = "black";
 
 function fillRow(row, howMany) {
@@ -24,14 +24,17 @@ function createRow(howMany) {
 }
 
 function addRow() {
+  rowNum++;
   createRow(1);
-  // setPixelHeight();
 }
 
 function removeRow() {
-  var rows = document.getElementsByClassName("pixelRow");
-  var lastRow = rows[rows.length - 1];
-  lastRow.parentNode.removeChild(lastRow);
+  if (rowNum > 1) {
+    rowNum--;
+    var rows = document.getElementsByClassName("pixelRow");
+    var lastRow = rows[rows.length - 1];
+    lastRow.parentNode.removeChild(lastRow);
+  }
 }
 
 function addCol() {
@@ -44,16 +47,38 @@ function addCol() {
 }
 
 function removeCol() {
-  columnNum--;
-  var rows = document.getElementsByClassName("pixelRow");
-  for (var i = 0; i < rows.length; i++) {
-    rows[i].removeChild(rows[i].childNodes[rows[i].childNodes.length-1]);
+  if (columnNum > 1) {
+    columnNum--;
+    var rows = document.getElementsByClassName("pixelRow");
+    for (var i = 0; i < rows.length; i++) {
+      rows[i].removeChild(rows[i].childNodes[rows[i].childNodes.length-1]);
+    }
+    setPixelHeight();
   }
-  setPixelHeight();
 }
 
 function colorPixel(event) {
   event.target.style.backgroundColor = pixelColor;
+}
+
+function randomColor() {
+  var possible = "0123456789ABCDEF"
+  var finalColor = "#";
+  for (var i = 0; i < 6; i++) {
+    finalColor += possible[Math.floor(Math.random() * 16)];
+  }
+  return finalColor;
+}
+
+function setCircleColor(circle, color) {
+  circle.style.backgroundColor = color;
+}
+
+function randomizeCircleColors() {
+  var circles = document.getElementsByClassName("random");
+  for (var i = 0; i < circles.length; i++) {
+    setCircleColor(circles[i], randomColor());
+  }
 }
 
 function setPixelHeight() {
@@ -70,14 +95,25 @@ function setPixelHeight() {
   for (var i = 0; i < rows.length; i++) {
     pixels = rows[i].childNodes;
     for (var j = 0; j < pixels.length; j++) {
-      pixels[i].style.height = pixelHeight+"px";
+      pixels[j].style.height = pixelHeight+"px";
     }
   }
+}
+
+function changeColor(event) {
+  pixelColor = event.target.style.backgroundColor;
+  console.log(pixelColor);
 }
 
 var grid = document.getElementById("grid");
 grid.addEventListener("click", colorPixel);
 
+var colors = document.getElementsByClassName("color");
+for (var i = 0; i < colors.length; i++) {
+  colors[i].addEventListener("click", changeColor);
+}
+
 window.addEventListener("resize", setPixelHeight);
 
 createRow(rowNum);
+randomizeCircleColors();
