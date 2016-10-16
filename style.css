@@ -10,14 +10,17 @@ body {
   display: flex;
   justify-content: space-between;
   min-width: 768px;
-  background-color: gray;
+  background-color: #9099A2;
   cursor: default;
   text-align: center;
+  font-family: "VT323";
 }
 
 h1 {
   font-size: 2em;
+  color: #0F1626;
 }
+
 h2 {
   font-size: 1.2em;
 }
@@ -25,15 +28,35 @@ h2 {
 hr {
   width: 90%;
   margin: auto;
+  border: 0;
+  border-bottom: 1px dashed #fff;
+  background: #999;
 }
 
 button {
   /*font-size: 3em;*/
-  width: 40%;
   /*display: block;*/
   /*max-width: 50px;*/
   /*margin: auto;*/
   margin-top: 0.5em;
+  background-color: #3C3C3C;
+  color: white;
+  border-radius: 4px;
+  position: relative;
+  font-size: 1em;
+  padding: 0.3em;
+  border: none;
+}
+
+button:active {
+  top: 1px;
+}
+
+.gridButton {
+  width: 45%;
+  padding: 0;
+  font-size: 2em;
+  border: none;
 }
 
 /* Pixel Art Container */
@@ -41,9 +64,9 @@ button {
   flex-grow: 1;
   margin: 2em auto;
   margin-bottom: 3em;
-  border: 2px solid black;
+  /*border: 2px solid black;*/
   border-radius: 2em;
-  background-color: lightgray;
+  background-color: #EFEFEF;
   box-shadow:0 6px 20px 0 rgba(0, 0, 0, 0.4);
 }
 
@@ -69,7 +92,7 @@ button {
 
 /* Side Menus */
 .menu {
-  flex-basis: 10%;
+  flex-basis: 12%;
   margin-top: 3em;
 }
 

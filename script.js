@@ -1,8 +1,8 @@
 'use strict';
 
 // Number of rows and columns to generate initial grid
-var rowNum = 30;
-var columnNum = 40;
+var rowNum = 35;
+var columnNum = 35;
 
 // Global pixel color
 var pixelColor = "";
@@ -15,6 +15,8 @@ function fillRow(row, howMany) {
   for (var i = 0; i < howMany; i++) {
     pixel = document.createElement("div");
     pixel.className = "pixelBlock";
+    pixel.addEventListener("mouseenter", highlightPixel);
+    pixel.addEventListener("mouseleave", unhighlightPixel);
     row.appendChild(pixel);
   }
 }
@@ -71,6 +73,20 @@ function removeCol() {
   }
 }
 
+// ----- Highlighting Pixels -----
+
+function highlightPixel(event) {
+  event.target.style.border = "1px dashed gray";
+}
+
+function unhighlightPixel(event) {
+  if (event.target.style.backgroundColor === "") {
+    event.target.style.border = "1px solid gray";
+  } else {
+    event.target.style.border = "1px solid "+event.target.style.backgroundColor;
+  }
+}
+
 // ----- Circle colors -----
 
 function randomColor() {
@@ -100,8 +116,10 @@ function randomizeCircleColors() {
 
 function colorPixel(event) {
   // Colors a pixel that has been clicked on
-  event.target.style.backgroundColor = pixelColor;
-  event.target.style.borderColor = pixelColor;
+  if (event.target.id !== "grid") {
+    event.target.style.backgroundColor = pixelColor;
+    event.target.style.borderColor = pixelColor;
+  }
 }
 
 function eraser() {
@@ -129,7 +147,10 @@ function setPixelHeight() {
 }
 
 
+// Create grid and generate random colors
 var grid = document.getElementById("grid");
+createRow(rowNum);
+randomizeCircleColors();
 
 // Colors a pixel when it is clicked
 grid.addEventListener("click", colorPixel);
@@ -165,6 +186,6 @@ for (var i = 0; i < colors.length; i++) {
 
 window.addEventListener("resize", setPixelHeight);
 
-// Create grid and generate random colors
-createRow(rowNum);
-randomizeCircleColors();
+window.onload = function() {
+  setPixelHeight();
+}

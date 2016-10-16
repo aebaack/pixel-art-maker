@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Aidan's Pixel Art</title>
+    <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
   </head>
   <body>
     <aside class="menu">
-      <h1>Change Color</h1>
+      <h1>Edit Colors</h1>
       <hr>
       <section class="gridEdit">
         <h2>Current</h2>
@@ -25,7 +26,7 @@
             <div class="circle color" style="background-color: yellow"></div>
             <div class="circle color" style="background-color: orange"></div>
             <div class="circle color" style="background-color: red"></div>
-            <div class="circle color" style="background-color: purple"></div>
+            <div class="circle color" style="background-color: #8B4726"></div>
             <div class="circle color" style="background-color: white"></div>
             <div class="circle color" style="background-color: black"></div>
           </div>
@@ -41,9 +42,9 @@
           </div>
         </div>
         <button onclick="randomizeCircleColors();">Random</button>
-        <h2>Custom color</h2>
+        <h2 style="margin-top: 0.5em;">Custom color</h2>
         <input type="color" value="#ff0000" id="customColor">
-        <button onclick="addCustomColor();">Add</button>
+        <button onclick="addCustomColor();" style="margin-bottom: 1em;">Add</button>
       </section>
     </aside>
     <div id="wrapper">
@@ -51,17 +52,17 @@
       <div id="grid"></div>
     </div>
     <aside class="menu">
-      <h1>Change Grid</h1>
+      <h1>Edit Grid</h1>
       <hr>
       <div class="gridEdit">
         <h2>Rows</h2>
-        <button onclick="addRow();">+</button>
-        <button onclick="removeRow();">-</button>
+        <button onclick="addRow();" class="gridButton">+</button>
+        <button onclick="removeRow();" class="gridButton">-</button>
       </div>
       <div class="gridEdit">
         <h2>Columns</h2>
-        <button onclick="addCol();">+</button>
-        <button onclick="removeCol();">-</button>
+        <button onclick="addCol();" class="gridButton">+</button>
+        <button onclick="removeCol();" class="gridButton">-</button>
       </div>
       <div class="gridEdit">
         <h2>Tools</h2>
