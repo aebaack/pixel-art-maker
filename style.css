@@ -56,6 +56,12 @@ button:active {
   border: none;
 }
 
+.toolButton {
+  display: block;
+  margin: auto;
+  margin-top: 1em;
+}
+
 /* Pixel Art Container */
 #wrapper {
   flex-grow: 1;

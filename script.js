@@ -127,6 +127,14 @@ function eraser() {
   pixelColor = "";
 }
 
+function clearCanvas() {
+  var pixels = document.getElementsByClassName("pixelBlock");
+  for (var i = 0; i < pixels.length; i++) {
+    pixels[i].style.backgroundColor = "";
+    pixels[i].style.borderColor = "";
+  }
+}
+
 function addCustomColor() {
   var custom = document.getElementById("customColor").value;
   pixelColor = custom;
